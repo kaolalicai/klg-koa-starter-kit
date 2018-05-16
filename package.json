@@ -2,10 +2,11 @@
   "name": "klg-koa-starter-kit",
   "version": "1.0.0",
   "description": "考拉后端项目模板",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/app.js",
+  "types": "dist/app.d.ts",
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.ts' --fix",
+    "serve": "nodemon dist/src/app.js",
     "build": "tsc -d -p ./",
     "test": "jest",
     "cov": "jest --coverage --coverageDirectory=coverage",
@@ -49,13 +50,16 @@
     "config": "^1.30.0",
     "klg-logger": "^1.0.4",
     "koa": "^2.5.1",
+    "koa-router": "^7.2.1",
     "koa-bodyparser": "^4.2.0",
     "koa-morgan": "^1.0.1",
-    "tracer": "^0.8.12"
+    "mongoose": "^4.12.4"
   },
   "devDependencies": {
     "@types/jest": "^22.2.0",
     "@types/koa": "^2.0.45",
+    "@types/mongoose": "^4.7.25",
+    "@types/koa-router": "^7.0.23",
     "@types/power-assert": "^1.4.29",
     "jest": "^22.4.2",
     "source-map-support": "^0.5.3",

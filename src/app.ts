@@ -2,7 +2,7 @@ import * as Koa from 'koa'
 import * as config from 'config'
 import * as bodyParser from 'koa-bodyparser'
 import * as morgan from 'koa-morgan'
-import {logger} from './lib/Logger'
+import {logger} from './lib'
 
 const time = Date.now()
 const app = new Koa()
@@ -16,7 +16,7 @@ app.use(morgan('tiny', {
 }))
 
 // routers
-const router = require('./app/router')
+const router = require('./router')
 app.use(router.routes())
 app.use(router.allowedMethods())
 
