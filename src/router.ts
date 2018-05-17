@@ -1,10 +1,15 @@
-const router = require('koa-router')({
-  prefix: '/api/v1'
-})
+import * as Router from 'koa-router'
+
+const router = Router({prefix: '/api/v1'})
 
 // const RequestMonitor = require('./common/middleware/RequestMonitor')
 // const responseFormatter = require('./common/middleware/ResponseFormatter') TODO
 // router.use('/', RequestMonitor, responseFormatter('^/api'))
+
+// require('./user/router').router(router)
+require('./demo/router').router(router)
+
+export {router}
 
 /**
  * @apiDefine userId
@@ -38,6 +43,4 @@ const router = require('koa-router')({
  * @apiUse responseExample
  */
 
-require('./user/router').router(router)
 
-module.exports = router
