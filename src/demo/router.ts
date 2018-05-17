@@ -1,12 +1,15 @@
+import {DemoController} from './DemoController'
+
+const demoController = new DemoController()
 
 export function router (router) {
 
   /**
-   * @api {get} /hello/:userId  say hello to user
+   * @api {get} /demo/hello/:name  say hello to user
    * @apiName Hello
-   * @apiGroup User
+   * @apiGroup Demo
    *
-   * @apiParam {String} userId  用户 ID.
+   * @apiParam {String} name  用户.
    */
-  // router.get('/hello/:userId', userController.hello)
+  router.get('/demo/hello/:name', demoController.hello)
 }
