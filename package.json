@@ -51,11 +51,16 @@
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.0",
     "koa-morgan": "^1.0.1",
-    "tracer": "^0.8.12"
+    "mongodb-mock-server": "^1.0.0",
+    "mongoose": "^5.1.1",
+    "reflect-metadata": "^0.1.12",
+    "tracer": "^0.8.12",
+    "typegoose": "^5.2.1"
   },
   "devDependencies": {
     "@types/jest": "^22.2.0",
     "@types/koa": "^2.0.45",
+    "@types/mongoose": "^5.0.14",
     "@types/power-assert": "^1.4.29",
     "jest": "^22.4.2",
     "source-map-support": "^0.5.3",
