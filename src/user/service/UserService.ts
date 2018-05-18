@@ -8,8 +8,8 @@ export class UserService {
   async register (user) {
     const newUser = new UserModel(user)
     await newUser.save()
-    logger.info('register ', newUser.toObject())
     await newUser.registerSuccess()
+    logger.info('register ', newUser.toObject())
     return newUser.toObject()
   }
 }

@@ -10,11 +10,11 @@ module.exports = {
       port: process.env.REDIS_PORT,
       password: process.env.REDIS_PASS
     },
-    mongoDebug: false,
+    mongoDebug: true,
     mongodb: [
       {
         name: 'db',
-        url: 'mongodb://joda/kit-test',
+        url: 'mongodb://joda:27017/kit-test',
         options: {}
       }
     ]

@@ -1,7 +1,7 @@
 import {mongodb} from '../modules'
 import {prop, instanceMethod, InstanceType, Typegoose} from 'typegoose'
 
-export class User extends Typegoose {
+export class User extends mongodb.BaseModel {
   @prop({required: true})
   name: string
 

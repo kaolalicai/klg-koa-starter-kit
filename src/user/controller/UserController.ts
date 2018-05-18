@@ -5,7 +5,7 @@ const userService = new UserService()
 
 export class UserController {
 
-  register (ctx: Context) {
-    ctx.body = userService.register(ctx.request.body)
+  async register (ctx: Context) {
+    ctx.body = await userService.register(ctx.request.body)
   }
 }

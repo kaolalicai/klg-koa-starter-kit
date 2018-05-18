@@ -10,7 +10,7 @@ module.exports = {
       port: process.env.REDIS_PORT,
       password: process.env.REDIS_PASS
     },
-    mongoDebug: false,
+    mongoDebug: true,
     mongodb: [
       {
         name: 'db',

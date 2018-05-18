@@ -1,6 +1,6 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'test'
 
-import {initData} from './helper/database'
+import {initData, close} from './helper/database'
 import {request} from './helper/request'
 import {nock} from './helper/nock'
 
@@ -15,10 +15,11 @@ beforeAll(async function () {
   // TODO flush redis
 })
 
-afterAll(async () => {
+afterAll((done) => {
   // databaseHelpser.close()
   logger.info(' 测试结束 cleanAll nock')
   nock.cleanAll()
+  close(done)
 })
 
 const prefix = '/api/v1'
