@@ -5,10 +5,13 @@ import * as MockMongoServer from 'mongodb-mock-server'
  * todo 改成 npm module
  */
 export class TestHelper {
+  static close () {
+    MockMongoServer.cleanup()
+  }
+
   static async initMockDbConnection () {
 
     return new Promise<Connection>((resolve, reject) => {
-      // mockgoose.helper.setDbVersion('3.2.1')
       MockMongoServer.createServer(40003).then(server => {
         server.setMessageHandler(request => {
           const doc = request.document

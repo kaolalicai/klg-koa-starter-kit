@@ -1,5 +1,3 @@
-process.env.NODE_ENV = process.env.NODE_ENV || 'test'
-
 import {initData, close} from './helper/database'
 import {request} from './helper/request'
 import {nock} from './helper/nock'
