@@ -1,15 +1,14 @@
 import {UserController} from './controller/UserController'
 
-const userController = new UserController()
-
 export function router (router) {
 
   /**
-   * @api {get} /hello/:userId  say hello to user
+   * @api {post} /register  用户注册
    * @apiName Hello
    * @apiGroup User
    *
-   * @apiParam {String} userId  用户 ID.
+   * @apiParam {String} name  用户名.
+   * @apiParam {String} phone  手机号.
    */
-  router.get('/hello/:userId', userController.hello)
+  router.post('/user/register', new UserController().register)
 }

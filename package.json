@@ -8,6 +8,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "serve": "nodemon dist/src/app.js",
     "build": "tsc -d -p ./",
+    "dev": "NODE_ENV=dev ts-node src/main.ts",
     "test": "jest",
     "cov": "jest --coverage --coverageDirectory=coverage",
     "prepublishOnly": "npm run build",
@@ -62,6 +63,7 @@
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "@types/koa": "^2.0.45",
+    "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-router": "^7.0.23",
     "@types/mongoose": "^5.0.14",
     "@types/power-assert": "^1.4.29",

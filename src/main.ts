@@ -10,4 +10,3 @@ app.listen(port, () => {
   logger.info(` app star in ${process.env.NODE_ENV || 'local'} env `)
   logger.info(` app star in ${(Date.now() - time) / 1000} s, listen on port ${port}`)
 })
-

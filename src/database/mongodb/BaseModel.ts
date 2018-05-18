@@ -1,9 +1,10 @@
-import {Typegoose, GetModelForClassOptions} from 'typegoose'
+import {Typegoose, GetModelForClassOptions, InstanceType} from 'typegoose'
+import * as mongoose from 'mongoose'
 import {dbs} from './Connection'
 
-class BaseModel extends Typegoose {
+export class BaseModel extends Typegoose {
 
-  getModelForClass<T> (t: T, {existingMongoose, schemaOptions, existingConnection}: GetModelForClassOptions = {}) {
+  getModelForClass<T> (t: T, {existingMongoose, schemaOptions, existingConnection}: GetModelForClassOptions = {}): mongoose.Model<InstanceType<this>> & this & T {
 
     // typegoose 默认会 parse 父类，但是 BaseModel 没有东西可以 parse，会报错，那就假装自己是 Typegoose 类，跳过 parse
     let parentCtor = Object.getPrototypeOf(this.constructor.prototype).constructor
@@ -20,6 +21,3 @@ class BaseModel extends Typegoose {
     return super.getModelForClass<T>(t, {existingMongoose, schemaOptions, existingConnection})
   }
 }
-
-export {BaseModel}
-export * from 'typegoose'

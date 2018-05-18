@@ -1,8 +1,15 @@
-import { User } from '../model/User'
+import {UserModel} from '../model/User'
+import {lib} from '../modules'
+
+const {logger} = lib
 
 export class UserService {
 
-  static async getUserByName (name: string) {
-    return await User.findOne({name: name})
+  async register (user) {
+    const newUser = new UserModel(user)
+    await newUser.save()
+    logger.info('register ', newUser.toObject())
+    await newUser.registerSuccess()
+    return newUser.toObject()
   }
 }

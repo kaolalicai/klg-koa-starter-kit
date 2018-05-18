@@ -1,26 +1,24 @@
-import {Document, Model, Schema} from 'mongoose'
-import database from '../../connection/mongodb'
+import {mongodb} from '../modules'
+import {prop, instanceMethod, InstanceType, Typegoose} from 'typegoose'
 
-const mongodb = database.get('mongodb')
-
-export interface IUser {
-  phone: string
+export class User extends Typegoose {
+  @prop({required: true})
   name: string
+
+  @prop({required: true, index: true, unique: true})
+  phone: string
+
+  @prop()
   isRegister: boolean
+
+  @prop({default: 0})
   balance: number
+
+  @instanceMethod
+  registerSuccess (this: InstanceType<User>) {
+    this.isRegister = true
+    return this.save()
+  }
 }
 
-const modelName = 'User'
-
-export interface UserModel extends IUser, Document {
-
-}
-
-const schema: Schema = new Schema({
-  phone: {type: String},
-  name: {type: String},
-  isRegister: {type: Boolean},
-  balance: {type: Number}
-})
-
-export const User: Model<UserModel> = mongodb.model<UserModel>(modelName, schema, modelName)
+export const UserModel = new User().getModelForClass(User)

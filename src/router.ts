@@ -6,8 +6,8 @@ const router = Router({prefix: '/api/v1'})
 // const responseFormatter = require('./common/middleware/ResponseFormatter') TODO
 // router.use('/', RequestMonitor, responseFormatter('^/api'))
 
-// require('./user/router').router(router)
-require('./demo/router').router(router)
+require('./user/router').router(router)
+// require('./demo/router').router(router)
 
 export {router}
 

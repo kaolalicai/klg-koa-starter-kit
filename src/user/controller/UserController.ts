@@ -1,11 +1,11 @@
 import {UserService} from '../service/UserService'
+import {Context} from 'koa'
 
-/**
- * getUserByName
- * @param ctx
- * @returns {Promise<void>}
- */
-export async function getUserByName (ctx) {
-  const {name} = ctx.params
-  ctx.body = await UserService.getUserByName(name)
+const userService = new UserService()
+
+export class UserController {
+
+  register (ctx: Context) {
+    ctx.body = userService.register(ctx.request.body)
+  }
 }

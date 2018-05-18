@@ -11,7 +11,7 @@ const {logger} = lib
 nock.register()
 
 beforeAll(async function () {
-  await initData()
+  // await initData()
   // TODO flush redis
 })
 
