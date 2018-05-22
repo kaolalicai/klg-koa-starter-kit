@@ -1,7 +1,7 @@
 import * as Router from 'koa-router'
 import {responseFormatter} from './common/middleware/ResponseFormatter'
 
-const router = Router({prefix: '/api/v1'})
+const router = new Router({prefix: '/api/v1'})
 
 router.use('/', responseFormatter('^/api'))
 
@@ -41,4 +41,3 @@ export {router}
  * @apiUse response
  * @apiUse responseExample
  */
-

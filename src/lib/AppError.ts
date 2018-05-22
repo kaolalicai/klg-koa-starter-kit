@@ -4,6 +4,7 @@ const ErrorInfo = {
   UNKNOWN_ERROR: '未知错误',
   NOT_EXIST: '%s不存在:%s',
   EXIST: '%s已存在',
+  REPEAT_ORDER: '订单不可重复提交 %s'
 }
 
 const ErrorCode = {
@@ -14,20 +15,20 @@ const ErrorCode = {
   NOT_ENOUGH: 1505            // 余额不足
 }
 
+function buildMsg (message: string, ...params) {
+  return util.format(message, ...params)
+}
+
 export class AppError extends Error {
   static ERRORS = ErrorInfo
   static CODES = ErrorCode
+  static BuildMsg = buildMsg
 
   code: number
   message: string
 
   constructor (message: string = ErrorInfo.UNKNOWN_ERROR, ...params) {
     super()
-    if (params && params.length) {
-      params.unshift(message)
-      message = util.format(...params)
-      // message = util.format.apply(util, params)
-    }
     this.code = ErrorCode.DEFAULT
     this.message = message
   }

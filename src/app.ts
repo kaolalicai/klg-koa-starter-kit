@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import * as Koa from 'koa'
 import * as bodyParser from 'koa-bodyparser'
 import * as morgan from 'koa-morgan'

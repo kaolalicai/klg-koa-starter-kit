@@ -3,9 +3,10 @@ import {Context} from 'koa'
 
 const userService = new UserService()
 
-export class UserController {
+export async function register (ctx: Context) {
+  ctx.body = await userService.register(ctx.request.body)
+}
 
-  async register (ctx: Context) {
-    ctx.body = await userService.register(ctx.request.body)
-  }
+export async function recharge (ctx: Context) {
+  ctx.body = await userService.register(ctx.request.body)
 }

@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "config": "^1.30.0",
+    "joi": "^13.3.0",
     "klg-logger": "^1.0.4",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.0",
@@ -62,6 +63,7 @@
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
+    "@types/joi": "^13.0.8",
     "@types/koa": "^2.0.45",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-router": "^7.0.23",
