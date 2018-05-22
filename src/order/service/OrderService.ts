@@ -10,6 +10,10 @@ const {Constants, ObjectId, AppError, logger} = lib
  * Created by nick on 2017/3/10.
  */
 export class OrderService {
+  static getModel () {
+    return OrderModel
+  }
+
   /**
    * 检查和保存 order
    * @param data

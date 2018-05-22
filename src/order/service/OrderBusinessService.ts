@@ -12,10 +12,10 @@ export interface BusinessResult {
 }
 
 export abstract class OrderBusinessService {
-  orderType: string
+  abstract orderType: string
   orderService = new OrderService()
 
-  async process (data, ctx) {
+  async process (data, ctx?) {
     const order = await this.saveOrder(data, ctx)
     if (order.isDone()) return 'success'
     let result = null

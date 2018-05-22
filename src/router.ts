@@ -1,9 +1,6 @@
 import * as Router from 'koa-router'
-import {responseFormatter} from './common/middleware/ResponseFormatter'
 
 const router = new Router({prefix: '/api/v1'})
-
-router.use('/', responseFormatter('^/api'))
 
 require('./user/router').router(router)
 // require('./demo/router').router(router)

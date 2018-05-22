@@ -1,6 +1,6 @@
 import {request, prefix} from '../../TestHelper'
 
-describe('User Controller Test', () => {
+describe('User register Test', () => {
   it('register ', async () => {
     const {body} = await request.post(prefix + `/user/register`)
       .send({

@@ -1,15 +1,7 @@
-import {UserModel} from '../model/User'
-import {lib} from '../modules'
-
-const {logger} = lib
+import {RechargeService} from './RechargeService'
+import {RegisterService} from './RegisterService'
 
 export class UserService {
-
-  async register (user) {
-    const newUser = new UserModel(user)
-    await newUser.save()
-    await newUser.registerSuccess()
-    logger.info('register ', newUser.toObject())
-    return newUser.toObject()
-  }
+  register = new RegisterService()
+  recharge = new RechargeService()
 }

@@ -13,3 +13,8 @@ export {lib}
 import * as database from './database'
 
 export {database}
+
+// lib
+import * as order from './order'
+
+export {order}
