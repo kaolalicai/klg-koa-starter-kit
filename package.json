@@ -10,6 +10,7 @@
     "build": "tsc -d -p ./",
     "dev": "NODE_ENV=dev ts-node src/main.ts",
     "test": "jest",
+    "mocha": "NODE_ENV=e2e mocha -t 5000 -r ts-node/register test/**/*.test.ts",
     "e2e": "NODE_ENV=e2e jest --config=test/jest-e2e.json --forceExit",
     "cov": "jest --coverage --coverageDirectory=coverage",
     "pretest": "npm run lint"
@@ -48,6 +49,7 @@
     "node": ">=8.9.0"
   },
   "dependencies": {
+    "@types/mocha": "^5.2.0",
     "config": "^1.30.0",
     "joi": "^13.3.0",
     "klg-logger": "^1.0.4",
@@ -73,6 +75,7 @@
     "@types/power-assert": "^1.4.29",
     "@types/supertest": "^2.0.4",
     "jest": "^22.4.2",
+    "mocha": "^5.2.0",
     "nock": "^9.2.6",
     "source-map-support": "^0.5.3",
     "supertest": "^3.1.0",

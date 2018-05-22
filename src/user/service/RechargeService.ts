@@ -1,6 +1,6 @@
 import {lib, order} from '../modules'
 
-const {logger, Constants} = lib
+const {Constants} = lib
 
 export class RechargeService extends order.OrderBusinessService {
 

@@ -1,7 +1,8 @@
+import * as assert from 'assert'
 import {lib, order} from '../../modules'
 import {prefix, request} from '../../TestHelper'
 
-describe('User recharge Test', () => {
+describe.only('User recharge Test', () => {
   const userId = '5b03b80c9b6c6043c138d1b6'
   it('recharge ', async () => {
     const {body} = await request.post(prefix + `/user/${userId}/recharge`)
@@ -10,15 +11,15 @@ describe('User recharge Test', () => {
       })
       .expect(200)
 
-    expect(body.code).toEqual(0)
+    assert(body.code === 0)
   })
 
   it(' 可以找到充值订单 ', async () => {
     const fOrder = await order.OrderService.getModel().findOne({})
-    expect(fOrder)
+    assert(fOrder)
     console.log('fOrder', fOrder.toObject())
-    expect(fOrder.type).toEqual(lib.Constants.ORDER_TYPE.RECHARGE)
-    expect(fOrder.amount).toEqual(300)
-    expect(fOrder.status).toEqual(lib.Constants.ORDER_STATUS.PENDING)
+    assert(fOrder.type === lib.Constants.ORDER_TYPE.RECHARGE)
+    assert(fOrder.amount === 300)
+    assert(fOrder.status === lib.Constants.ORDER_STATUS.PENDING)
   })
 })
