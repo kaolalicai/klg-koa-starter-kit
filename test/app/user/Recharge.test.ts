@@ -2,7 +2,7 @@ import * as assert from 'assert'
 import {lib, order} from '../../modules'
 import {prefix, request} from '../../TestHelper'
 
-describe.only('User recharge Test', () => {
+describe('User recharge Test', () => {
   const userId = '5b03b80c9b6c6043c138d1b6'
   it('recharge ', async () => {
     const {body} = await request.post(prefix + `/user/${userId}/recharge`)

@@ -1,2 +1,3 @@
-export * from './mongodb/BaseModel'
-export * from './mongodb/Connection'
+import * as mongodb from './mongodb'
+
+export {mongodb}

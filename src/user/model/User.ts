@@ -1,24 +1,32 @@
+import {Document, Model, Schema} from 'mongoose'
 import {mongodb} from '../modules'
-import {prop, instanceMethod, InstanceType, Typegoose} from 'typegoose'
 
-export class User extends mongodb.BaseModel {
-  @prop({required: true})
+const db = mongodb.dbs.get('db')
+const modelName = 'User'
+
+export interface IUser {
   name: string
-
-  @prop({required: true, index: true, unique: true})
   phone: string
-
-  @prop()
   isRegister: boolean
-
-  @prop({default: 0})
   balance: number
-
-  @instanceMethod
-  registerSuccess (this: InstanceType<User>) {
-    this.isRegister = true
-    return this.save()
-  }
 }
 
-export const UserModel = new User().getModelForClass(User)
+export interface UserModel extends IUser, Document {
+  registerSuccess (): UserModel
+}
+
+const schema: Schema = new Schema({
+  phone: {type: String, required: true, index: true, unique: true},
+  name: {type: String, required: true},
+  isRegister: {type: Boolean},
+  balance: {type: Number, default: 0}
+
+})
+
+schema.methods.registerSuccess = function (this: UserModel) {
+  this.isRegister = true
+  return this.save()
+}
+
+schema.set('timestamps', true)        // createAt, updatedAt -> UTC
+export const User: Model<UserModel> = db.model<UserModel>(modelName, schema, modelName)

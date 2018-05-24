@@ -76,6 +76,7 @@
     "@types/supertest": "^2.0.4",
     "jest": "^22.4.2",
     "mocha": "^5.2.0",
+    "mockingoose": "^2.9.1",
     "nock": "^9.2.6",
     "source-map-support": "^0.5.3",
     "supertest": "^3.1.0",

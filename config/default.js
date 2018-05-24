@@ -14,7 +14,7 @@ module.exports = {
     mongodb: [
       {
         name: 'db',
-        url: process.env.MONGODB || 'mongodb://localhost:40003/test',
+        url: process.env.MONGODB || 'mongodb://localhost/unit-test',
         options: {}
       }
     ]
