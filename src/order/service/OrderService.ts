@@ -1,6 +1,6 @@
 import * as Joi from 'joi'
 import * as _ from 'lodash'
-import {IOrder, OrderModel} from '../model/Order'
+import {IOrder, Order} from '../model/Order'
 import {lib} from '../modules'
 
 const {Constants, ObjectId, AppError, logger} = lib
@@ -11,7 +11,7 @@ const {Constants, ObjectId, AppError, logger} = lib
  */
 export class OrderService {
   static getModel () {
-    return OrderModel
+    return Order
   }
 
   /**
@@ -30,7 +30,7 @@ export class OrderService {
     _order._id = data.orderId ? ObjectId(data.orderId) : ObjectId()
     _order.requestId = _order._id.toString()
     logger.info('checkAndSaveOrder ', _order, orderType)
-    return await new OrderModel(_order).save()
+    return await new Order(_order).save()
   }
 
   /**
@@ -44,7 +44,7 @@ export class OrderService {
       orderId: Joi.string().length(24).required(),
       type: Joi.string().required()
     })
-    const order = await OrderModel.findById(orderId)
+    const order = await Order.findById(orderId)
     if (!order) throw new AppError(AppError.ERRORS.NOT_EXIST, '订单', orderId)
     logger.info('orderId %s type %s status %s', order.id, order.type, order.status)
     if (order.type !== type) throw new AppError(`订单类型有误 期望${type} 实际${order.type}`)

@@ -1,91 +1,75 @@
-import {Document} from 'mongoose'
-import {instanceMethod, InstanceType, prop} from 'typegoose'
+import {Document, Model, Schema} from 'mongoose'
 import {lib, mongodb} from '../modules'
 
-class OrderError {
-  @prop()
-  message: string    // 错误信息
+const {Constants} = lib
+const db = mongodb.dbs.get('db')
+const modelName = 'Order'
 
-  @prop({sparse: true})
-  code?: string        // 错误码
-}
-
-class OrderExtend {
-  @prop()
-  message: string    // 错误信息
-
-  @prop({sparse: true})
-  code: string        // 错误码
-}
-
-export class Order extends mongodb.BaseModel {
-  @prop({required: true})
+export interface IOrder {
   type: string
-
-  @prop({required: true, index: true})
   userId: string
-
-  @prop({required: true, index: true, unique: true})
   requestId: string
-
-  @prop({
-    required: true, index: true, default: () => Date.now()
-  })
   time: number
-
-  @prop()
-  error: OrderError
-
-  @prop({required: true})
-  amount: number
-
-  @prop({
-    required: true,
-    enum: Object.values(lib.Constants.ORDER_STATUS),
-    index: true,
-    default: lib.Constants.ORDER_STATUS.PENDING
-  })
+  amount: number,
   status: string
-
-  @prop()
-  extend: OrderExtend
-
-  @instanceMethod
-  done (this: InstanceType<Order>) {
-    this.status = lib.Constants.ORDER_STATUS.DONE
-    return this.save()
-  }
-
-  @instanceMethod
-  fail (this: InstanceType<Order>, error: string, code?) {
-    this.error = {
-      message: error,
-      code
-    }
-    this.status = lib.Constants.ORDER_STATUS.FAIL
-    return this.save()
-  }
-
-  @instanceMethod
-  isDone (this: InstanceType<Order>) {
-    return this.status === lib.Constants.ORDER_STATUS.DONE
-  }
-
-  @instanceMethod
-  isPending (this: InstanceType<Order>) {
-    return this.status === lib.Constants.ORDER_STATUS.PENDING
-  }
-
-  @instanceMethod
-  isConfirming (this: InstanceType<Order>) {
-    return this.status === lib.Constants.ORDER_STATUS.CONFIRMING
-  }
-
-  @instanceMethod
-  isFail (this: InstanceType<Order>) {
-    return this.status === lib.Constants.ORDER_STATUS.FAIL
-  }
+  error: {
+    message: string
+    code: string
+  },
+  extend: {}
 }
 
-export declare type IOrder = Order & Document
-export const OrderModel = new Order().getModelForClass(Order)
+export interface OrderModel extends IOrder, Document {
+  done (): OrderModel
+
+  fail (): OrderModel
+
+  isDone (): boolean
+
+  isFail (): boolean
+}
+
+const schema: Schema = new Schema({
+  type: {type: String, required: true, index: true},
+  userId: {type: String, index: true},
+  requestId: {type: String, required: true, index: true},
+  time: {
+    type: Number, required: true, default: function () {
+      return Date.now()
+    }, index: true
+  },
+  amount: {type: Number, required: true, default: 0},
+  error: {
+    message: {type: String},    // 错误信息
+    code: {type: String, sparse: true},       // 错误码
+    type: {type: String}       // 错误类型
+  },
+  status: {
+    type: String,
+    required: true,
+    enum: Object.values(Constants.ORDER_STATUS),
+    index: true,
+    default: Constants.ORDER_STATUS.PENDING
+  }
+})
+
+schema.methods.done = async function (this: OrderModel) {
+  this.status = Constants.ORDER_STATUS.DONE
+  return await this.save()
+}
+
+schema.methods.fail = async function (this: OrderModel) {
+  this.status = Constants.ORDER_STATUS.FAIL
+  return await this.save()
+}
+
+schema.methods.isDone = function () {
+  return this.status === Constants.ORDER_STATUS.DONE
+}
+
+schema.methods.isFail = function () {
+  return this.status === Constants.ORDER_STATUS.FAIL
+}
+
+schema.set('timestamps', true)        // createAt, updatedAt -> UTC
+export const Order: Model<OrderModel> = db.model<OrderModel>(modelName, schema, modelName)
