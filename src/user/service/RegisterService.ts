@@ -12,7 +12,8 @@ export class RegisterService extends order.OrderBusinessService {
     await newUser.registerSuccess()
     logger.info('register ', newUser.toObject())
     return {
-      isSuccess: true
+      isSuccess: true,
+      orderId: order.id
     }
   }
 

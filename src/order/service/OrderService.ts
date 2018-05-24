@@ -1,6 +1,6 @@
 import * as Joi from 'joi'
 import * as _ from 'lodash'
-import {IOrder, Order} from '../model/Order'
+import {OrderModel, Order} from '../model/Order'
 import {lib} from '../modules'
 
 const {Constants, ObjectId, AppError, logger} = lib
@@ -20,7 +20,7 @@ export class OrderService {
    * @param {string} orderType
    * @returns {Promise<Order>}
    */
-  async checkAndSaveOrder (data, orderType: string): Promise<IOrder> {
+  async checkAndSaveOrder (data, orderType: string): Promise<OrderModel> {
     // save order
     let _order = _.clone(data)
     _order.type = orderType
@@ -39,7 +39,7 @@ export class OrderService {
    * @param {string} type
    * @returns {Promise<Order>}
    */
-  async findAndCheckOrder (orderId: string, type: string): Promise<IOrder> {
+  async findAndCheckOrder (orderId: string, type: string): Promise<OrderModel> {
     Joi.assert({orderId, type}, {
       orderId: Joi.string().length(24).required(),
       type: Joi.string().required()

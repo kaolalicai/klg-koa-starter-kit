@@ -1,24 +1,29 @@
-import {close, initData} from './helper/database'
+process.env.NODE_ENV = 'e2e'
+
 import {nock} from './helper/nock'
 import {request} from './helper/request'
 
-import {lib} from './modules'
+import {database, lib, test} from './modules'
 
 const {logger} = lib
+let filePath = ''
+const prefix = '/api/v1'
 
 nock.register()
 
-beforeEach(async function () {
-  await initData(this.currentTest.file)
-  // TODO flush redis
+beforeAll(async function () {
+  console.log('filePath', filePath)
+  await test.initData(filePath)
 })
 
-after((done) => {
-  // databaseHelpser.close()
-  logger.info(' 测试结束 cleanAll nock')
+afterAll((done) => {
   nock.cleanAll()
-  close(done)
+  done()
+  // database.mongodb.dbs.get('db').close()
 })
 
-const prefix = '/api/v1'
 export {request, nock, prefix}
+
+export function initFixuture (file) {
+  filePath = file
+}

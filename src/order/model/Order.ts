@@ -1,7 +1,7 @@
 import {Document, Model, Schema} from 'mongoose'
 import {lib, mongodb} from '../modules'
 
-const {Constants} = lib
+const {Constants, AppError} = lib
 const db = mongodb.dbs.get('db')
 const modelName = 'Order'
 
@@ -14,7 +14,7 @@ export interface IOrder {
   status: string
   error: {
     message: string
-    code: string
+    code?: number
   },
   extend: {}
 }
@@ -22,7 +22,7 @@ export interface IOrder {
 export interface OrderModel extends IOrder, Document {
   done (): OrderModel
 
-  fail (): OrderModel
+  fail (msg?): OrderModel
 
   isDone (): boolean
 
@@ -41,8 +41,7 @@ const schema: Schema = new Schema({
   amount: {type: Number, required: true, default: 0},
   error: {
     message: {type: String},    // 错误信息
-    code: {type: String, sparse: true},       // 错误码
-    type: {type: String}       // 错误类型
+    code: {type: Number, sparse: true}       // 错误码
   },
   status: {
     type: String,
@@ -58,8 +57,19 @@ schema.methods.done = async function (this: OrderModel) {
   return await this.save()
 }
 
-schema.methods.fail = async function (this: OrderModel) {
+schema.methods.fail = async function (this: OrderModel, error) {
   this.status = Constants.ORDER_STATUS.FAIL
+  if (error instanceof AppError) {
+    this.error = {
+      message: error.message,
+      code: error.code
+    }
+  }
+  if (typeof(error) === 'string') {
+    this.error = {
+      message: error
+    }
+  }
   return await this.save()
 }
 

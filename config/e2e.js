@@ -15,7 +15,7 @@ module.exports = {
       {
         name: 'db',
         url: 'mongodb://joda:27017/kit-test',
-        options: {}
+        options: {autoIndex: false}
       }
     ]
   },

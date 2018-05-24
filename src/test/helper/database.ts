@@ -8,8 +8,8 @@ const collections = []
  * todo 改成 npm module
  */
 export async function initData (filePath) {
-  const file = filePath.replace('spec.ts', 'data.ts')
-  logger.info('init test  ', file)
+  const file = filePath.replace('spec.ts', 'data.ts').replace('test.ts', 'data.ts')
+  logger.info('init test  data', file)
   await remove()
   await insertData(file)
 }

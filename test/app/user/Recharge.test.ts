@@ -1,6 +1,8 @@
 import * as assert from 'assert'
 import {lib, order} from '../../modules'
-import {prefix, request} from '../../TestHelper'
+import {initFixuture, prefix, request} from '../../TestHelper'
+
+initFixuture(__filename)
 
 describe('User recharge Test', () => {
   const userId = '5b03b80c9b6c6043c138d1b6'

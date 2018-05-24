@@ -1,4 +1,6 @@
-import {request, prefix} from '../../TestHelper'
+import {initFixuture, prefix, request} from '../../TestHelper'
+
+initFixuture(__filename)
 
 describe('User register Test', () => {
   it('register ', async () => {

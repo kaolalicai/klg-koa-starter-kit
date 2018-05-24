@@ -4,6 +4,10 @@ export * from './app'
 const models = {}
 export {models}
 
+// test
+import * as test from './test'
+
+export {test}
 // lib
 import * as lib from './lib'
 

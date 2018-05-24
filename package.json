@@ -49,7 +49,6 @@
     "node": ">=8.9.0"
   },
   "dependencies": {
-    "@types/mocha": "^5.2.0",
     "config": "^1.30.0",
     "joi": "^13.3.0",
     "klg-logger": "^1.0.4",
@@ -75,7 +74,6 @@
     "@types/power-assert": "^1.4.29",
     "@types/supertest": "^2.0.4",
     "jest": "^22.4.2",
-    "mocha": "^5.2.0",
     "mockingoose": "^2.9.1",
     "nock": "^9.2.6",
     "source-map-support": "^0.5.3",

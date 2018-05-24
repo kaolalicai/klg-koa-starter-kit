@@ -1,4 +1,4 @@
-import {IOrder} from '../model/Order'
+import {OrderModel} from '../model/Order'
 import {lib} from '../modules'
 import {OrderService} from './OrderService'
 
@@ -64,7 +64,7 @@ export abstract class OrderBusinessService {
    * @param {Order} order
    * @returns {Promise<void>}
    */
-  async bizCallback (result, order?: IOrder) {
+  async bizCallback (result, order?: OrderModel) {
     let newOrder = order || await this.orderService.findAndCheckOrder(result.orderId, this.orderType)
     newOrder = await newOrder.done()
     await this.onSuccess(newOrder, result)
@@ -77,7 +77,7 @@ export abstract class OrderBusinessService {
    * @param order
    * @returns {Promise.<void>}
    */
-  async bizFailCallback (result, order?: IOrder) {
+  async bizFailCallback (result, order?: OrderModel) {
     let newOrder = order || await this.orderService.findAndCheckOrder(result.orderId, this.orderType)
     const error = result.error || result.msg || result.err
     newOrder = await newOrder.fail(error)
