@@ -1,6 +1,7 @@
 import * as Koa from 'koa'
 import * as bodyParser from 'koa-bodyparser'
 import * as morgan from 'koa-morgan'
+import * as serve from 'koa-static'
 import 'reflect-metadata'
 import {parameters, responseFormatter} from './common'
 import {router} from './router'
@@ -20,6 +21,9 @@ app.use(responseFormatter('^/api'))
 
 // 将所有参数注册到 ctx.parameters
 app.use(parameters)
+
+// statics
+app.use(serve('assets'))
 
 // routers
 app.use(router.routes())

@@ -2,11 +2,6 @@ import * as Router from 'koa-router'
 
 const router = new Router({prefix: '/api/v1'})
 
-require('./user/router').router(router)
-// require('./demo/router').router(router)
-
-export {router}
-
 /**
  * @apiDefine userId
  * @apiParam {String} userId 用户ID.
@@ -38,3 +33,6 @@ export {router}
  * @apiUse response
  * @apiUse responseExample
  */
+
+require('./user/router').router(router)
+export {router}

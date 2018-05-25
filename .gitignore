@@ -4,3 +4,4 @@ coverage/
 **.map
 .idea/
 dist/
+assets/
