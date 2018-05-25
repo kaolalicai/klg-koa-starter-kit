@@ -1,0 +1,49 @@
+@startuml
+
+Event : 事件注册器()
+note left of Event : 事件注册器
+
+Other : Demo()
+note left of Other : 一些业务不知道放哪里的话，可以先放这里
+
+User : 注册()
+User : 充值()
+
+Order : 通用订单逻辑()
+Order : 订单查询()
+
+Lib : logger()
+Lib : AppError()
+Lib : Constants()
+note left of Lib : 通用工具库
+
+DateBase : 数据库连接()
+Common : 中间件()
+note bottom of Common : 通用组件
+Test : 测试准备数据()
+note bottom of Test : 单元测试和e2e测试的工具类
+
+
+Event <--* User
+Event <--* Order
+Event <--* Other
+
+Other <--* User
+User <--* Order
+
+User <--* Lib
+Order <--* Lib
+
+User <--* DateBase
+Order <--* DateBase
+
+User <--* Common
+Order <--* Common
+
+User <--* Test
+Order <--* Test
+
+
+DateBase <--* Lib
+
+@enduml

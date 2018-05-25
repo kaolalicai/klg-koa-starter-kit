@@ -1,0 +1,15 @@
+@startuml
+actor 用户 as User
+boundary App
+entity 第三方充值 as TH
+
+
+User -> App : 请求充值
+App -> TH : 请求充值
+TH -> App : 返回充值页面url
+App -> User : 返回跳转url
+User -> TH : 访问充值页面完成充值
+TH --> App : 发送充值回调
+App --> App : 更新用户余额
+
+@enduml
