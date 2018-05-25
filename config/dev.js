@@ -6,9 +6,7 @@ module.exports = {
   port: process.env.PORT || 3008,
   database: {
     redis: {
-      host: process.env.REDIS_HOST,
-      port: process.env.REDIS_PORT,
-      password: process.env.REDIS_PASS
+      url: 'redis://joda:6379'
     },
     mongoDebug: true,
     mongodb: [

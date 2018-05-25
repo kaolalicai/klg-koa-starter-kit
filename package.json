@@ -10,10 +10,10 @@
     "build": "tsc -d -p ./",
     "dev": "NODE_ENV=dev ts-node src/main.ts",
     "start": "node dist/main.js",
-    "test": "jest --forceExit",
-    "mocha": "NODE_ENV=e2e mocha -t 5000 -r ts-node/register test/**/*.test.ts",
-    "e2e": "NODE_ENV=e2e jest --config=test/jest-e2e.json --forceExit",
     "cov": "jest --coverage --coverageDirectory=coverage",
+    "test": "npm run test-unit && npm run test-e2e",
+    "test-unit": "jest --forceExit",
+    "test-e2e": "NODE_ENV=e2e jest --config=test/jest-e2e.json --forceExit",
     "pretest": "npm run lint"
   },
   "jest": {
@@ -59,11 +59,9 @@
     "koa-morgan": "^1.0.1",
     "koa-router": "^7.4.0",
     "lodash": "^4.17.10",
-    "mongodb-mock-server": "^1.0.0",
     "mongoose": "^5.1.1",
     "reflect-metadata": "^0.1.12",
-    "tracer": "^0.8.12",
-    "typegoose": "^5.2.1"
+    "tracer": "^0.8.12"
   },
   "devDependencies": {
     "@types/ioredis": "^3.2.8",
@@ -74,7 +72,6 @@
     "@types/koa-router": "^7.0.23",
     "@types/lodash": "^4.14.109",
     "@types/mongoose": "^5.0.14",
-    "@types/power-assert": "^1.4.29",
     "@types/supertest": "^2.0.4",
     "jest": "^22.4.2",
     "mockingoose": "^2.9.1",
