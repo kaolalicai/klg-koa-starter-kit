@@ -1,4 +1,4 @@
-import {lib, order} from '../modules'
+import {lib, order, proxy} from '../modules'
 
 const {Constants, NumberUtil} = lib
 
@@ -8,7 +8,9 @@ export class RechargeService extends order.OrderBusinessService {
 
   async business (order, createUserDto) {
     order.amount = NumberUtil.fixedNum(order.amount)
-    // TODO http to 充值服务
+
+    await proxy.ThirdProxy.getInstance().recharge(order)
+
     return {
       isAsync: true,
       isSuccess: true

@@ -12,6 +12,8 @@ User : 充值()
 Order : 通用订单逻辑()
 Order : 订单查询()
 
+Proxy : xxxProxy()
+
 Lib : logger()
 Lib : AppError()
 Lib : Constants()
@@ -30,6 +32,9 @@ Event <--* Other
 
 Other <--* User
 User <--* Order
+
+User <--* Proxy
+Order <--* Proxy
 
 User <--* Lib
 Order <--* Lib
