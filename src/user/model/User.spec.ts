@@ -1,4 +1,4 @@
-import {test} from '../modules'
+import {test} from '../test'
 import {User} from './User'
 test.initFixuture(__filename)
 
