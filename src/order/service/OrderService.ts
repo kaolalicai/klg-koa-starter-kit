@@ -1,6 +1,6 @@
 import * as Joi from 'joi'
 import * as _ from 'lodash'
-import {OrderModel, Order} from '../model/Order'
+import {Order, OrderModel} from '../model/Order'
 import {lib} from '../modules'
 
 const {Constants, ObjectId, AppError, logger} = lib
@@ -10,15 +10,24 @@ const {Constants, ObjectId, AppError, logger} = lib
  * Created by nick on 2017/3/10.
  */
 export class OrderService {
-  static getModel () {
-    return Order
+  private static instance
+
+  static getInstance () {
+    if (!this.instance) {
+      this.instance = new OrderService()
+    }
+    return this.instance
+  }
+
+  async findOne (query) {
+    return Order.findOne(query)
   }
 
   /**
    * 检查和保存 order
    * @param data
    * @param {string} orderType
-   * @returns {Promise<Order>}
+   * @returns {Promise<OrderModel>}
    */
   async checkAndSaveOrder (data, orderType: string): Promise<OrderModel> {
     // save order

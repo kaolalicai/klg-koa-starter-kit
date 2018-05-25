@@ -1,14 +1,8 @@
 /**
- * 为了方便做数据清理，这里采用了飞线式写法
+ * 为了方便做测试数据清理，这里采用了飞线式写法
  * @type {{}}
  */
-
-import {Order} from '../order/model'
-import {User} from '../user/model'
-
-const models = {
-  User,
-  Order
-}
-
+const models = {}
+Object.assign(models, require('../order/model'))
+Object.assign(models, require('../user/model'))
 export {models}

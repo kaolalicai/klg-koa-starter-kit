@@ -17,7 +17,7 @@ describe('User recharge Test', () => {
   })
 
   it(' 可以找到充值订单 ', async () => {
-    const fOrder = await order.OrderService.getModel().findOne({})
+    const fOrder = await order.OrderService.getInstance().findOne({})
     assert(fOrder)
     console.log('fOrder', fOrder.toObject())
     assert(fOrder.type === lib.Constants.ORDER_TYPE.RECHARGE)
