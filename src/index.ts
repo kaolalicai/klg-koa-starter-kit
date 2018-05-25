@@ -18,7 +18,7 @@ import * as database from './database'
 
 export {database}
 
-// lib
+// order
 import * as order from './order'
 
 export {order}

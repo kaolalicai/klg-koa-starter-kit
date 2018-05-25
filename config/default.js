@@ -17,6 +17,9 @@ module.exports = {
         url: process.env.MONGODB || 'mongodb://localhost/unit-test',
         options: {}
       }
-    ]
+    ],
+    redis: {
+      url: process.env.REDIS || 'redis://:authpassword@127.0.0.1:6380',
+    }
   },
 }

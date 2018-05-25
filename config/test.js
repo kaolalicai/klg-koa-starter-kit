@@ -12,6 +12,9 @@ module.exports = {
         url: process.env.MONGODB || 'mongodb://joda:27017/kit-test',
         options: {}
       }
-    ]
+    ],
+    redis: {
+      url: 'redis://joda:6379'
+    }
   },
 }
