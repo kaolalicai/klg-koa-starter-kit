@@ -1,19 +1,20 @@
-process.env.NODE_ENV = 'e2e'
-
 import {nock} from './helper/nock'
 import {request} from './helper/request'
+import {initData, remove} from './helper/database'
 
-import {database, lib, test} from './modules'
+process.env.NODE_ENV = 'e2e'
 
-const {logger} = lib
 let filePath = ''
 const prefix = '/api/v1'
 
 nock.register()
 
+console.log('===============================+++++++++++++++++++')
+
 beforeAll(async function () {
-  console.log('filePath', filePath)
-  await test.initData(filePath)
+  console.log('filePath==============', filePath)
+  await remove()
+  if (filePath) await initData(filePath)
 })
 
 afterAll((done) => {

@@ -1,9 +1,8 @@
 import {lib, order, proxy} from '../../modules'
-import {initFixuture, prefix, request} from '../../TestHelper'
-
-initFixuture(__filename)
+import {initFixuture, prefix, request} from '../../E2ETestHelper'
 
 describe('User recharge Test', () => {
+  initFixuture(__filename)
   const userId = '5b03b80c9b6c6043c138d1b6'
   it('recharge ', async () => {
     const spy = jest.spyOn(proxy.ThirdProxy.prototype, 'recharge')

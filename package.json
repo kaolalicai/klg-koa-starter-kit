@@ -14,7 +14,7 @@
     "cov": "jest --coverage --coverageDirectory=coverage",
     "test": "npm run test-unit && npm run test-e2e",
     "test-unit": "jest --forceExit",
-    "test-e2e": "NODE_ENV=e2e jest --config=test/jest-e2e.json --forceExit",
+    "test-e2e": "NODE_ENV=e2e jest --config=test/jest-e2e.json",
     "pretest": "npm run lint"
   },
   "jest": {
@@ -57,6 +57,7 @@
     "klg-logger": "^1.0.4",
     "klg-number": "^1.0.3",
     "klg-request": "^2.2.2",
+    "klg-tracer": "^3.2.1",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.0",
     "koa-morgan": "^1.0.1",

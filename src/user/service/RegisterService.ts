@@ -15,7 +15,10 @@ export class RegisterService extends order.OrderBusinessService {
     await this.testRedis()
     return {
       isSuccess: true,
-      orderId: order.id
+      orderId: order.id,
+      returnData: {
+        amount: order.amount
+      }
     }
   }
 

@@ -3,6 +3,6 @@
  * @type {{}}
  */
 const models = {}
-Object.assign(models, require('../order/model'))
-Object.assign(models, require('../user/model'))
+Object.assign(models, require('../src/order/model'))
+Object.assign(models, require('../src/user/model'))
 export {models}

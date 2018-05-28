@@ -2,7 +2,10 @@ import {models} from '../Models'
 import {lib} from '../modules'
 
 const {logger} = lib
-const collections = []
+
+export async function delay (time) {
+  return new Promise((resolve) => setTimeout(resolve, time))
+}
 
 /**
  * todo 改成 npm module
@@ -10,11 +13,11 @@ const collections = []
 export async function initData (filePath) {
   const file = filePath.replace('spec.ts', 'data.ts').replace('test.ts', 'data.ts')
   logger.info('init test  data', file)
-  await remove()
   await insertData(file)
 }
 
 export async function remove () {
+  // await db.dropDatabase()
   for (let model of Object.values(models)) {
     await (model as any).remove({})
   }
@@ -28,7 +31,6 @@ async function insertData (filePath) {
       let model = models[d.model]
       if (!model) throw new Error(' 不存在这个 Model ' + d.model)
       await model.create(d.items)
-      collections.push(d.model)
     }
   } catch (err) {
     logger.info('init file fail ', filePath, err.message)

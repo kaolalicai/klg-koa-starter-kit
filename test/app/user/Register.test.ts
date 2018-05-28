@@ -1,4 +1,4 @@
-import {initFixuture, prefix, request} from '../../TestHelper'
+import {initFixuture, prefix, request} from '../../E2ETestHelper'
 
 initFixuture(__filename)
 

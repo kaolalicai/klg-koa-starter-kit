@@ -1,3 +1,4 @@
+require('./tracer')
 import * as config from 'config'
 import {app} from './app'
 import {logger} from './lib'

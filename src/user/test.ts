@@ -1,3 +1,3 @@
-import * as test from '../test'
+import * as test from '../../test/UnitTestHelper'
 
 export {test}
