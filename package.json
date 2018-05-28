@@ -66,8 +66,7 @@
     "koa-static": "^4.0.3",
     "lodash": "^4.17.10",
     "mongoose": "^5.1.1",
-    "reflect-metadata": "^0.1.12",
-    "tracer": "^0.8.12"
+    "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {
     "@types/ioredis": "^3.2.8",
@@ -81,7 +80,6 @@
     "@types/supertest": "^2.0.4",
     "apidoc": "^0.17.6",
     "jest": "^22.4.2",
-    "mockingoose": "^2.9.1",
     "nock": "^9.2.6",
     "source-map-support": "^0.5.3",
     "supertest": "^3.1.0",
@@ -89,7 +87,7 @@
     "ts-node": "^5.0.1",
     "tslint": "^5.9.1",
     "tslint-config-klg": "^1.0.4",
-    "typescript": "^2.7.2",
+    "typescript": "^2.8.3",
     "webstorm-disable-index": "^1.2.0"
   }
 }
