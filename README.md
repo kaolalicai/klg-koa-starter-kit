@@ -6,28 +6,12 @@
 全部可用命令见 package.json
 
 推荐 Node 版本 Node8+
+
+
 推荐 npm 版本 5+
+
+
 推荐 typescript 版本 2.8.1
-
-## 本项目使用的外部开源库
-
-- config 配置，根据不同的环境切换配置
-- ioredis redis 连接
-- joi 参数校验
-- klg-logger 日志
-- klg-number 数字处理
-- klg-redlock 分布式锁
-- klg-request http请求
-- klg-tracer http请求log
-- koa + 中间件 mvc框架
-- mongoose mongodb orm
-- apidoc api 从注释生成接口文档
-- jest 测试框架
-- nock http mock
-- supertest koa test 工具
-- tslint typescript lint
-- tslint-config-klg typescript code style
-
 
 ## 系统模块
 要提高代码的可维护性和可拓展性，主要手段就是解耦代码，根据业务划分代码模块是非常有必要的。
@@ -99,3 +83,22 @@ $ npm run cov
 $ make build
 ```
 默认推送到公司仓库，可以在 Makefile 中修改仓库地址和镜像信息
+
+## 本项目使用的外部开源库
+
+- config 配置，根据不同的环境切换配置
+- ioredis redis 连接
+- joi 参数校验
+- klg-logger 日志
+- klg-number 数字处理
+- klg-redlock 分布式锁
+- klg-request http请求
+- klg-tracer http请求log
+- koa + 中间件 mvc框架
+- mongoose mongodb orm
+- apidoc api 从注释生成接口文档
+- jest 测试框架
+- nock http mock
+- supertest koa test 工具
+- tslint typescript lint
+- tslint-config-klg typescript code style
