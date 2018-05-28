@@ -35,4 +35,5 @@ const router = new Router({prefix: '/api/v1'})
  */
 
 require('./user/router').router(router)
+require('./other/router').router(router)
 export {router}

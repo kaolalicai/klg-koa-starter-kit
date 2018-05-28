@@ -1,4 +1,5 @@
 import * as UserController from './controller/UserController'
+import {common} from './modules'
 
 export function router (router) {
 
@@ -10,7 +11,10 @@ export function router (router) {
    * @apiParam {String} name  用户名.
    * @apiParam {String} phone  手机号.
    */
-  router.post('/user/register', UserController.register)
+  router.post(
+    '/user/register',
+    common.Redlock.mutex('phone'),
+    UserController.register)
 
   /**
    * @api {post} /recharge  用户充值
@@ -28,5 +32,7 @@ export function router (router) {
    *      "message" : "余额不足"
    *    }
    */
-  router.post('/user/:userId/recharge', UserController.recharge)
+  router.post('/user/:userId/recharge',
+    common.Redlock.mutex('userId'),
+    UserController.recharge)
 }
