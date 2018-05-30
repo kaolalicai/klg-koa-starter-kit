@@ -1,6 +1,6 @@
 {
   "name": "klg-boilerplate-project-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "klg koa server template",
   "main": "index.js",
   "scripts": {

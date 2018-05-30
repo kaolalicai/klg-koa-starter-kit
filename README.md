@@ -24,17 +24,8 @@ npm i klg-init -g
 初始化项目
 
 ```bash
-klg-init --type=project-ts foo
-
-cd foo
-
-npm i
-
-npm run dev
+klg-init --type project-ts foo
 ```
-
-
-
 
 ## 系统模块
 要提高代码的可维护性和可拓展性，主要手段就是解耦代码，根据业务划分代码模块是非常有必要的。
