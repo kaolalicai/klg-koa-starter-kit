@@ -1,17 +1,40 @@
 # klg-koa-starter-kit
 考拉后端项目模板
 
+## 软件版本
+- Node 8+
+- npm 5+
+- typescript 2.8+
+
 ## QuickStart
 
-全部可用命令见 package.json
+### clone 本项目
 
-推荐 Node 版本 Node8+
+```bash
+git clone https://github.com/kaolalicai/klg-koa-starter-kit.git
+```
+
+### 使用 klg-init
+
+先安装 klg-init
+```bash
+npm i klg-init -g
+```
+
+初始化项目
+
+```bash
+klg-init --type=project-ts foo
+
+cd foo
+
+npm i
+
+npm run dev
+```
 
 
-推荐 npm 版本 5+
 
-
-推荐 typescript 版本 2.8.1
 
 ## 系统模块
 要提高代码的可维护性和可拓展性，主要手段就是解耦代码，根据业务划分代码模块是非常有必要的。
@@ -59,14 +82,14 @@ $ npm run test
 ```
 
 ### 单元测试
-优势是可以测试丰富的case，覆盖率高，但是撰写成本高，可以只针对核心接口多详细的单元测试
+优势是可以测试丰富的case，覆盖率高，但是编写成本高，可以只针对核心接口做多 case 的单元测试
 
 ```bash
 $ npm run test-unit
 ```
 
 ### 流程测试
-又称端到端（e2e）测试，模拟用户操作进行的测试，优势成本低，一个测试可以覆盖到一个接口的却大部分分支，缺点也是这个，无法覆盖所有分支。
+又称端到端（e2e）测试，模拟用户操作进行的测试，优势成本低，一个测试可以覆盖到大部分分支，缺点是比较重，要覆盖所有分支成本高。
 
 ```bash
 $ npm run test-e2e

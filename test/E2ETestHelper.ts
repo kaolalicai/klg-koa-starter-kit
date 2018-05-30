@@ -9,10 +9,7 @@ const prefix = '/api/v1'
 
 nock.register()
 
-console.log('===============================+++++++++++++++++++')
-
 beforeAll(async function () {
-  console.log('filePath==============', filePath)
   await remove()
   if (filePath) await initData(filePath)
 })
