@@ -1,5 +1,5 @@
 import {models} from '../Models'
-import {lib} from '../modules'
+import {database, lib} from '../modules'
 
 const {logger} = lib
 
@@ -14,6 +14,10 @@ export async function initData (filePath) {
   const file = filePath.replace('spec.ts', 'data.ts').replace('test.ts', 'data.ts')
   logger.info('init test  data', file)
   await insertData(file)
+}
+
+export async function flushRedis () {
+  await database.redis.flushdb()
 }
 
 export async function remove () {
@@ -35,4 +39,8 @@ async function insertData (filePath) {
   } catch (err) {
     logger.info('init file fail ', filePath, err.message)
   }
+}
+
+export function close (callback) {
+  database.mongodb.dbs.get('db').close(callback)
 }

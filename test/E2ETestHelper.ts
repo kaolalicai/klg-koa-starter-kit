@@ -1,27 +1,34 @@
+console.log('current env', process.env.NODE_ENV)
+process.env.NODE_ENV = 'test'
+import * as config from 'config'
+import {close, flushRedis, initData, remove} from './helper/database'
 import {nock} from './helper/nock'
 import {request} from './helper/request'
-import {initData, remove} from './helper/database'
-
-process.env.NODE_ENV = 'e2e'
 
 let filePath = ''
 const prefix = '/api/v1'
 
 nock.register()
 
-beforeAll(async function () {
-  await remove()
-  if (filePath) await initData(filePath)
+const fixtureStatus = new Map()
+
+before(async function () {
+  await flushRedis()
 })
 
-afterAll((done) => {
+beforeEach(async function () {
+  const file = (this.currentTest as any).file
+  if (fixtureStatus.has(file)) return
+  console.log('currentTest file', file)
+  await remove()
+  await initData(filePath)
+  fixtureStatus.set(file, true)
+})
+
+after((done) => {
   nock.cleanAll()
-  done()
-  // database.mongodb.dbs.get('db').close()
+  close(done)
+  console.info(' 测试结束 cleanAll nock')
 })
 
 export {request, nock, prefix}
-
-export function initFixuture (file) {
-  filePath = file
-}

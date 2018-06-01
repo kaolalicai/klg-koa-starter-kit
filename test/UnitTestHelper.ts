@@ -4,13 +4,13 @@ import {initData, remove} from './helper/database'
 const {logger} = lib
 
 let filePath = ''
-beforeAll(async function () {
+before(async function () {
   console.log('filePath========', filePath)
   await remove()
   if (filePath) await initData(filePath)
 })
 
-afterAll(() => {
+after(() => {
   logger.info(' 测试结束 cleanAll')
 })
 

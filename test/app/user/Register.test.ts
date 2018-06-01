@@ -1,6 +1,5 @@
-import {initFixuture, prefix, request} from '../../E2ETestHelper'
-
-initFixuture(__filename)
+import {prefix, request} from '../../E2ETestHelper'
+import * as assert from 'assert'
 
 describe('User register Test', () => {
   it('register ', async () => {
@@ -12,6 +11,6 @@ describe('User register Test', () => {
       .expect(200)
 
     // console.log('body', body)
-    expect(body.code).toEqual(0)
+    assert(body.code === 0)
   })
 })
