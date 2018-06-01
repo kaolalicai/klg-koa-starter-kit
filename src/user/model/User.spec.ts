@@ -1,6 +1,6 @@
-import {test} from '../test'
+import('../test')
 import {User} from './User'
-test.initFixuture(__filename)
+import * as assert from 'assert'
 
 describe('UserModel test', async function () {
 
@@ -10,9 +10,9 @@ describe('UserModel test', async function () {
     const user = await User.findOne()
 
     // prints { _id: 59218f686409d670a97e53e0, name: 'JohnDoe', __v: 0 }
-    expect(user.name).toEqual('JohnDoe')
-    expect(user.phone).toEqual('14366778876')
-    expect(user.balance).toEqual(0)
+    assert(user.name === 'JohnDoe')
+    assert(user.phone === '14366778876')
+    assert(user.balance === 0)
   })
 
 })

@@ -1,5 +1,5 @@
 import {lib} from './modules'
-import {initData, remove} from './helper/database'
+import {close, initData, remove} from './helper/database'
 
 const {logger} = lib
 
@@ -10,7 +10,8 @@ before(async function () {
   if (filePath) await initData(filePath)
 })
 
-after(() => {
+after((done) => {
+  close(done)
   logger.info(' 测试结束 cleanAll')
 })
 

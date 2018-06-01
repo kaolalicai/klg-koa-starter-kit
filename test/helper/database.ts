@@ -42,5 +42,7 @@ async function insertData (filePath) {
 }
 
 export function close (callback) {
-  database.mongodb.dbs.get('db').close(callback)
+  database.mongodb.dbs.get('db').close(function () {
+    database.redis.quit(callback)
+  })
 }
