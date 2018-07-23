@@ -3,6 +3,9 @@ module.exports = {
   log: {
     level: 'info'
   },
+  tracer: {
+    enable: true
+  },
   port: process.env.PORT || 3000,
   database: {
     mongoDebug: false,
