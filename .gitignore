@@ -4,5 +4,6 @@ coverage/
 **.map
 .idea/
 dist/
+*/.DS_Store
 assets/
 boilerplate/boilerplate/
