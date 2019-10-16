@@ -1,7 +1,6 @@
-import * as http from 'http'
 import * as supertest from 'supertest'
-import {app} from '../modules'
+import {app} from '../../src/app'
 
-const server = http.createServer(app.callback())
+const server = app.getHttpServer()
 
 export const request = supertest.agent(server)

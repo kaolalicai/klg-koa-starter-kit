@@ -1,20 +1,16 @@
 module.exports = {
-  isProd: false,
   log: {
-    level: 'info'
+    level: 'debug'
   },
-  port: process.env.PORT || 3008,
-  database: {
-    redis: {
-      url: 'redis://joda:6379'
-    },
-    mongoDebug: true,
-    mongodb: [
+  port: process.env.PORT || 3000,
+  mongodb: {
+    debug: true,
+    connections: [
       {
         name: 'db',
-        url: 'mongodb://joda/kit',
+        url: process.env.MONGODB || 'mongodb://localhost/kit',
         options: {}
       }
     ]
-  },
+  }
 }
