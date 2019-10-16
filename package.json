@@ -37,10 +37,10 @@
     "node": ">=8.9.0"
   },
   "dependencies": {
-    "@akajs/core": "0.0.7",
-    "@akajs/crud": "0.0.7",
-    "@akajs/mongoose": "0.0.6",
-    "@akajs/utils": "0.0.7",
+    "@akajs/core": "0.0.8",
+    "@akajs/crud": "0.0.8",
+    "@akajs/mongoose": "0.0.8",
+    "@akajs/utils": "0.0.8",
     "config": "^1.31.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.7.5",

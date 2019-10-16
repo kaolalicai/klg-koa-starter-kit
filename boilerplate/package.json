@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "copy": "rm -rf boilerplate/* && cp -r ../src ./boilerplate/ && cp -rf ../test ./boilerplate/ && cp -r ../document ./boilerplate/ && cp -r ../config ./boilerplate/ && cp ../* ./boilerplate/",
-    "values": "sed -i .back \"s/klg-koa-starter-kit/{{name}}/g; s/考拉后端项目模板/{{description}}/g\" boilerplate/package.json boilerplate/README.md",
-    "test": "npm run build && npm run install-deps && cd dist && npm test",
+    "postcopy": "sed -i .back \"s/klg-koa-starter-kit/{{name}}/g; s/考拉后端项目模板/{{description}}/g\" boilerplate/package.json boilerplate/README.md",
+    "test": "cd dist && npm test",
     "clean": "rm -rf boilerplate/.idea boilerplate/logs boilerplate/node_modules boilerplate/run boilerplate/*.back",
     "build": "npm run clean && klg-init dist --force --silent --template=./",
+    "pretest": "npm run build && npm run build && npm run install-deps",
     "prepublishOnly": "npm run clean",
     "install-deps": "cd dist && npm i --registry=https://registry.npm.taobao.org"
   },
