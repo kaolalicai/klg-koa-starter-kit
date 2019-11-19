@@ -37,30 +37,30 @@
     "node": ">=8.9.0"
   },
   "dependencies": {
-    "@akajs/core": "0.0.8",
-    "@akajs/crud": "0.0.8",
-    "@akajs/mongoose": "0.0.8",
-    "@akajs/utils": "0.0.8",
+    "@akajs/core": "^0.2.0",
+    "@akajs/crud": "^0.2.0",
+    "@akajs/mongoose": "^0.2.0",
+    "@akajs/utils": "^0.2.0",
     "config": "^1.31.0",
     "lodash": "^4.17.15",
-    "mongoose": "^5.7.5",
+    "mongoose": "^5.7.11",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.144",
+    "@types/lodash": "^4.14.149",
     "@types/mocha": "^5.2.7",
-    "@types/mongoose": "^5.5.21",
+    "@types/mongoose": "^5.5.32",
     "@types/supertest": "^2.0.8",
     "apidoc": "^0.17.7",
     "mocha": "^5.2.0",
     "nock": "^9.6.1",
     "nyc": "^12.0.2",
-    "source-map-support": "^0.5.13",
+    "source-map-support": "^0.5.16",
     "supertest": "^3.4.2",
     "ts-node": "^5.0.1",
-    "tslint": "^5.20.0",
+    "tslint": "^5.20.1",
     "tslint-config-klg": "^1.0.4",
-    "typescript": "^3.6.4",
+    "typescript": "^3.7.2",
     "webstorm-disable-index": "^1.2.0"
   }
 }

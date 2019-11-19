@@ -1,4 +1,4 @@
-FROM node:9-alpine as base
+FROM node:10-alpine as base
 
 WORKDIR /app
 COPY package.json .
@@ -8,7 +8,7 @@ RUN echo http://mirrors.aliyun.com/alpine/v3.6/main/ > /etc/apk/repositories && 
 RUN npm install --production --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/mirrors/node --build-from-source && mv node_modules prod_node_modules
 RUN npm install --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/mirrors/node --build-from-source
 
-FROM node:9-alpine as build
+FROM node:10-alpine as build
 WORKDIR /app
 COPY --from=base /app/node_modules ./node_modules
 COPY src ./src
@@ -17,7 +17,7 @@ COPY config ./config
 COPY package.json ./
 RUN npm run build
 
-FROM node:9-alpine as prod
+FROM node:10-alpine as prod
 RUN echo http://mirrors.aliyun.com/alpine/v3.6/main/ > /etc/apk/repositories && \
 	echo http://mirrors.aliyun.com/alpine/v3.6/community/ >> /etc/apk/repositories && \
 	apk update && apk add ca-certificates && \

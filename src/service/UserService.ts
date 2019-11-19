@@ -1,6 +1,6 @@
-import {Injectable} from '@akajs/core'
+import {Service} from '@akajs/core'
 
-@Injectable()
+@Service('UserService')
 export class UserService {
   async hello (name) {
     return 'hello ' + name
