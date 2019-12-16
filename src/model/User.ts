@@ -1,24 +1,13 @@
-import {Document, Model, Schema} from 'mongoose'
-import {IBaseMongoModel, MongoModel} from '@akajs/mongoose'
+import {TypeMongoModel} from '@akajs/mongoose'
+import {prop, ReturnModelType} from '@typegoose/typegoose'
 
-export interface IUser {
+// @TypeMongoModel(null, {db: 'db-name'}) // 可以指定 db 连接名
+@TypeMongoModel('UserModel')
+export class User {
+  @prop({index: true, required: true})
   phone: string
-  name: string
+  @prop()
+  name?: string
 }
 
-export interface IUserModel extends IUser, Document {
-  // registerSuccess (): IUserModelModel
-}
-
-export type UserModel = Model<IUserModel>
-
-const schema: Schema = new Schema({
-  phone: {type: String, index: true},
-  name: {type: String}
-})
-
-@MongoModel('UserModel')
-export class User implements IBaseMongoModel {
-  modelName = 'User'
-  schema = schema
-}
+export type UserModel = ReturnModelType<typeof User>

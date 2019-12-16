@@ -1,11 +1,11 @@
-import {Get, Inject} from '@akajs/core'
-import {CrudController, ICurdController} from '@akajs/crud'
+import {LazyInject} from '@akajs/ioc'
+import {Get, CrudController, ICurdController} from '@akajs/web'
 import {UserModel} from '../model/User'
 
 @CrudController('/user')
 export class UserController implements ICurdController {
 
-  @Inject('UserModel')
+  @LazyInject('UserModel')
   public crudModel: UserModel
 
   @Get('/hello/:name')

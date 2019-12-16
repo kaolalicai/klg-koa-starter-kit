@@ -1,6 +1,6 @@
-import {Service} from '@akajs/core'
+import {Service} from '@akajs/ioc'
 
-@Service('UserService')
+@Service()
 export class UserService {
   async hello (name) {
     return 'hello ' + name
