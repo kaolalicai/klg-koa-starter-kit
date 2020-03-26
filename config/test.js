@@ -8,7 +8,7 @@ module.exports = {
     connections: [
       {
         name: 'db',
-        url: process.env.MONGODB || 'mongodb://localhost/unit-test',
+        url: process.env.MONGODB || 'mongodb://localhost:57017/unit-test',
         options: {}
       }
     ]

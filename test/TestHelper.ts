@@ -18,7 +18,7 @@ beforeEach(async function () {
 })
 
 after((done) => {
-  closeDB(done)
+  closeDB().then(done)
   console.info(' 测试结束 cleanAll nock')
 })
 
