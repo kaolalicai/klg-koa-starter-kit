@@ -11,7 +11,7 @@
     "dev": "NODE_ENV=dev ts-node src/main.ts",
     "start": "ts-node -T src/main.ts",
     "cov": "nyc npm test",
-    "test": "NODE_ENV=test mocha -t 5000 -r ts-node/register test/**/*.spec.ts",
+    "test": "NODE_ENV=test mocha test",
     "pretest": "npm run lint"
   },
   "nyc": {
