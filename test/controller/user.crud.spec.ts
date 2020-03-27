@@ -14,6 +14,13 @@ describe('User crud', () => {
     'name': 'today'
   }
 
+  it(' hello ', async () => {
+    const res1 = await request.get(prefix + `/user/hello/nick`)
+      .expect(200)
+    console.log('body', res1.body)
+    expect(res1.body.code === 0)
+  })
+
   it(' create ', async () => {
     const res1 = await request.post(prefix + `/user`)
       .send(user1)

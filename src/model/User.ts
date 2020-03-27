@@ -5,7 +5,7 @@ import {prop, ReturnModelType} from '@typegoose/typegoose'
 @TypeMongoModel('UserModel')
 export class User {
   @prop({index: true, required: true})
-  phone: string
+  phone!: string
   @prop()
   name?: string
 }

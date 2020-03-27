@@ -2,7 +2,7 @@ import {initFixtureData} from '@akajs/mongoose'
 
 export {clearDB, closeDB} from '@akajs/mongoose'
 
-export async function initData (filePath) {
+export async function initData (filePath: string) {
   const file = filePath.replace('spec.ts', 'data.ts').replace('test.ts', 'data.ts')
   console.log('init test  data', file)
   try {

@@ -40,15 +40,16 @@
   },
   "dependencies": {
     "@akajs/ioc": "^0.6.5",
-    "@akajs/web": "^0.6.6",
     "@akajs/mongoose": "^0.6.5",
     "@akajs/utils": "^0.6.5",
+    "@akajs/web": "^0.6.6",
     "config": "^3.3.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.9.6",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.11",
     "@types/lodash": "^4.14.149",
     "@types/mocha": "^7.0.2",
     "@types/mongoose": "^5.7.7",
