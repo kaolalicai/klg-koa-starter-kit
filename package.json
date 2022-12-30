@@ -52,7 +52,7 @@
     "@types/mongoose": "^5.5.32",
     "@types/supertest": "^2.0.8",
     "apidoc": "^0.18.0",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "nock": "^11.7.0",
     "nyc": "^14.1.1",
     "source-map-support": "^0.5.16",
